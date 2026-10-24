@@ -17,8 +17,16 @@ export default function Footer() {
     <footer id="contact" className="relative border-t border-white/[0.05] bg-ink-2">
       {/* Contact call-to-action */}
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
-        <Reveal className="rounded-3xl border border-edge/70 bg-carbon p-8 sm:p-14 lg:p-16">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+        <Reveal className="relative overflow-hidden rounded-3xl border border-edge/70 bg-carbon p-8 sm:p-14 lg:p-16">
+          <Image
+            src="/cars/peugeot-508-detail.webp"
+            alt=""
+            fill
+            sizes="(min-width: 1280px) 1216px, 100vw"
+            className="object-cover opacity-30"
+          />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/85 to-carbon/40" />
+          <div className="relative grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.24em] text-silver">Контакти</p>
               <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl">

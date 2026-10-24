@@ -44,20 +44,11 @@ export const metadata: Metadata = {
     siteName: "Мартен Ауто",
     title: "Мартен Ауто - Внос на автомобили",
     description,
-    images: [
-      {
-        url: "/brand/banner.jpg",
-        width: 1368,
-        height: 768,
-        alt: "Мартен Ауто – За бъдещето си возило, елате при нас",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Мартен Ауто - Внос на автомобили",
     description,
-    images: ["/brand/banner.jpg"],
   },
 };
 

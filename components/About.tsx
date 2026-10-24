@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BadgeCheck, Landmark, MapPin, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site";
 import Reveal from "./Reveal";
@@ -26,6 +27,17 @@ export default function About() {
               Всяко плащане минава по официалната банкова сметка на фирмата. Така сделката ви е
               документирана и защитена от първия до последния ден.
             </p>
+          </Reveal>
+          <Reveal delay={0.2} className="relative mx-auto mt-10 max-w-2xl lg:ml-[-6rem] lg:max-w-none">
+            <div className="relative aspect-[16/9] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_55%,transparent_100%)]">
+              <Image
+                src="/cars/tiguan-front.webp"
+                alt="Volkswagen Tiguan с включени фарове"
+                fill
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="object-cover"
+              />
+            </div>
           </Reveal>
         </div>
 

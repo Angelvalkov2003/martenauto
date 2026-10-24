@@ -17,16 +17,15 @@ const stats = [
 ];
 
 export default function Hero() {
-  const bannerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
-    target: bannerRef,
-    offset: ["start end", "end start"],
+    target: sectionRef,
+    offset: ["start start", "end start"],
   });
-  const scale = useTransform(scrollYProgress, [0, 0.45], [0.95, 1]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
+  const carsY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
 
   return (
-    <section id="home" className="relative overflow-hidden pt-[72px]">
+    <section ref={sectionRef} id="home" className="relative overflow-hidden pb-24 pt-[72px] sm:pb-32">
       {/* Soft key light from above so the black isn't flat. */}
       <div
         aria-hidden
@@ -59,44 +58,72 @@ export default function Hero() {
           ))}
         </h1>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.85, ease }}
-            className="max-w-xl text-base leading-relaxed text-mute sm:text-lg"
-          >
-            Внасяме автомобили от Европа с прозрачен процес, плащане само по
-            официалната сметка на фирмата и доставка до нашата база в{" "}
-            <span className="text-silver-2">с. Драгичево</span>.
-          </motion.p>
+        <div className="relative mt-10 lg:min-h-[260px]">
+          <div className="relative z-10 lg:max-w-[30rem]">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.85, ease }}
+              className="max-w-xl text-base leading-relaxed text-mute sm:text-lg"
+            >
+              Внасяме автомобили от Европа с прозрачен процес, плащане само по
+              официалната сметка на фирмата и доставка до нашата база в{" "}
+              <span className="text-silver-2">с. Драгичево</span>.
+            </motion.p>
 
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 1, ease }}
+              className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+            >
+              <motion.a
+                href={site.links.mobile}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-metal group inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-sm font-semibold text-ink"
+              >
+                Разгледайте обявите в Mobile.bg
+                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </motion.a>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group inline-flex items-center justify-center gap-3 rounded-full border border-edge px-7 py-4 text-sm font-medium text-white transition-colors hover:border-silver/60 hover:bg-white/[0.03]"
+              >
+                Свържете се с нас
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.a>
+            </motion.div>
+          </div>
+
+          {/* Cars cut out of the brand banner and faded into the page background. */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1, ease }}
-            className="flex flex-col gap-3 sm:flex-row"
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.4, delay: 0.7, ease }}
+            className="relative -mx-5 mt-12 sm:-mx-8 lg:absolute lg:bottom-[-2.5rem] lg:left-[33%] lg:right-[-4rem] lg:mx-0 lg:mt-0"
           >
-            <motion.a
-              href={site.links.mobile}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-metal group inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-sm font-semibold text-ink"
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(203,213,225,0.12),transparent)] blur-2xl"
+            />
+            <motion.div
+              style={{ y: carsY }}
+              className="relative aspect-[1368/340] [mask-composite:intersect] [mask-image:linear-gradient(to_right,transparent,#000_14%,#000_88%,transparent),linear-gradient(to_bottom,transparent,#000_20%,#000_80%,transparent)]"
             >
-              Разгледайте обявите в Mobile.bg
-              <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </motion.a>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center gap-3 rounded-full border border-edge px-7 py-4 text-sm font-medium text-white transition-colors hover:border-silver/60 hover:bg-white/[0.03]"
-            >
-              Свържете се с нас
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.a>
+              <Image
+                src="/brand/hero-cars.webp"
+                alt="Audi Q7, Mercedes E-Class и Škoda Octavia с регистрационни табели Marten Auto"
+                fill
+                priority
+                sizes="(min-width: 1280px) 900px, 100vw"
+                className="object-contain"
+              />
+            </motion.div>
           </motion.div>
         </div>
 
@@ -104,7 +131,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="mt-16 grid grid-cols-3 border-y border-white/[0.07]"
+          className="relative z-10 mt-16 grid grid-cols-3 border-y border-white/[0.07]"
         >
           {stats.map((stat, i) => (
             <div
@@ -122,25 +149,6 @@ export default function Hero() {
         </motion.dl>
       </div>
 
-      <div ref={bannerRef} className="relative mx-auto max-w-7xl px-5 pb-24 pt-14 sm:px-8 sm:pb-32">
-        <motion.div
-          style={{ scale }}
-          className="relative origin-bottom overflow-hidden rounded-2xl border border-white/[0.08] bg-carbon shadow-[0_40px_120px_-40px_rgba(203,213,225,0.25)] sm:rounded-[28px]"
-        >
-          <motion.div style={{ y: imageY }} className="relative aspect-[1368/768] scale-[1.12]">
-            <Image
-              src="/brand/banner.jpg"
-              alt="Мартен Ауто – Audi Q7, Mercedes E-Class и Škoda Octavia с регистрационни табели Marten Auto"
-              fill
-              priority
-              sizes="(min-width: 1280px) 1216px, 100vw"
-              className="object-cover"
-            />
-          </motion.div>
-          <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/10" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/80 to-transparent" />
-        </motion.div>
-      </div>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Handshake, Landmark, Route, Truck, type LucideIcon } from "lucide-react";
 import { site } from "@/lib/site";
@@ -53,8 +54,20 @@ const steps: Step[] = [
 
 export default function Process() {
   return (
-    <section id="process" className="border-t border-white/[0.05] py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="process" className="relative overflow-hidden border-t border-white/[0.05] py-24 sm:py-32">
+      {/* Studio shot sits behind the heading, faded so the copy stays on plain black. */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0, x: 60 }}
+        whileInView={{ opacity: 0.85, x: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        className="pointer-events-none absolute right-0 top-0 hidden aspect-[16/9] w-[58%] max-w-[900px] [mask-composite:intersect] [mask-image:linear-gradient(to_right,transparent,#000_35%),linear-gradient(to_bottom,transparent,#000_15%,#000_60%,transparent)] md:block"
+      >
+        <Image src="/cars/tiguan-side.webp" alt="" fill sizes="58vw" className="object-cover" />
+      </motion.div>
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Процес на доставка"
           title="Как работим"
