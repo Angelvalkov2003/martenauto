@@ -8,7 +8,11 @@ export const site = {
   phoneDisplay: "0876 111 490",
   phoneHref: "tel:+359876111490",
   domain: "martenauto.com",
-  url: "https://martenauto.com",
+  // Vercel sets this to the production domain (custom domain once attached, else *.vercel.app),
+  // so share previews always point at a host that actually serves the og:image.
+  url: process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://martenauto.com",
   location: "с. Драгичево",
   locationNote: "между Перник и София",
   links: {
