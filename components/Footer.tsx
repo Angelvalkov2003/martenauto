@@ -7,7 +7,7 @@ import Reveal from "./Reveal";
 const channels = [
   { href: site.links.facebook, label: "Facebook", note: "Новини и нови автомобили", icon: FacebookIcon },
   { href: site.links.mobile, label: "Mobile.bg", note: "Официален каталог с обяви", icon: Car },
-  { href: site.links.viber, label: "Viber Общност", note: "Първи научавате за нови коли", icon: ViberIcon },
+  { href: site.links.viber, label: "Viber Общност", note: "Най-горещите оферти – първо тук", icon: ViberIcon },
 ];
 
 export default function Footer() {
@@ -30,11 +30,11 @@ export default function Footer() {
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.24em] text-silver">Контакти</p>
               <h2 className="mt-5 font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl">
-                Готови ли сте за следващия си автомобил?
+                Кажете ни коя кола искате. Офертата е безплатна.
               </h2>
               <p className="mt-6 max-w-lg text-base leading-relaxed text-mute sm:text-lg">
-                Обадете се на {site.manager} – ще ви помогнем с избора и ще ви кажем реалния срок
-                за доставка.
+                Обадете се на {site.manager} – ще ви кажем колко ще спестите и кога колата ще е при
+                вас. Без ангажимент, нищо не губите.
               </p>
             </div>
 
@@ -142,7 +142,8 @@ export default function Footer() {
 
       {/* Contact bar */}
       <div className="border-t border-white/[0.05]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-6 text-sm sm:px-8 lg:flex-row lg:items-center lg:justify-between">
+        {/* Extra bottom room on phones so the pinned call bar doesn't cover it. */}
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 pb-28 pt-6 text-sm sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:pb-6">
           <ul className="flex flex-col gap-3 text-silver-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-0">
             <li>
               <a href={site.phoneHref} className="flex items-center gap-2 transition-colors hover:text-white">

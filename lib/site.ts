@@ -20,13 +20,16 @@ export const site = {
     facebook: "https://www.facebook.com/martenauto17/?locale=bg_BG",
     viber:
       "https://invite.viber.com/?g2=AQB9AWAmYTrnqlRsGLtOKQ7gdZcKQULWFWAC7rriS1ZkT1lZmyl87ueFc07Rs0DN",
+    // Opens a private Viber chat with the manager's number.
+    viberChat: "viber://chat?number=%2B359876111490",
   },
 } as const;
 
 export const navLinks = [
   { href: "#home", label: "Начало" },
+  { href: "#deals", label: "Оферти" },
   { href: "#about", label: "За нас" },
   { href: "#process", label: "Процес на доставка" },
-  { href: "#cars", label: "Автомобили" },
+  { href: "#viber", label: "Горещи оферти" },
   { href: "#contact", label: "Контакти" },
 ] as const;

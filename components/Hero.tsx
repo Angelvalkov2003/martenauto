@@ -5,13 +5,14 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
+import { ViberIcon } from "./BrandIcons";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const headline = ["За", "бъдещето", "си", "возило,", "елате", "при", "нас"];
 
 const stats = [
-  { value: "100%", label: "Сигурност" },
+  { value: "€ 4 000+", label: "Спестявате" },
   { value: "15–30", label: "Дни Доставка" },
   { value: "Директен", label: "Внос" },
 ];
@@ -33,6 +34,21 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 pt-16 sm:px-8 sm:pt-24 lg:pt-28">
+        <motion.a
+          href="#deals"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease }}
+          className="group mb-8 inline-flex max-w-full items-center gap-2.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 py-1.5 pl-1.5 pr-4 text-xs text-emerald-100 transition-colors hover:border-emerald-400/60 sm:text-sm"
+        >
+          <span className="shrink-0 rounded-full bg-emerald-500 px-2.5 py-1 font-semibold text-white">−22%</span>
+          <span className="truncate">
+            Kia Niro <b className="font-semibold text-white">€ 14 000</b>{" "}
+            <s className="text-emerald-100/60">€ 18 000</s>
+          </span>
+          <ArrowRight className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+        </motion.a>
+
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,24 +94,25 @@ export default function Hero() {
               className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
             >
               <motion.a
-                href={site.links.mobile}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#deals"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-metal group inline-flex items-center justify-center gap-3 rounded-full px-7 py-4 text-sm font-semibold text-ink"
               >
-                Разгледайте обявите в Mobile.bg
-                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                Вижте колко спестявате
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </motion.a>
               <motion.a
-                href="#contact"
+                href={site.links.viber}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center justify-center gap-3 rounded-full border border-edge px-7 py-4 text-sm font-medium text-white transition-colors hover:border-silver/60 hover:bg-white/[0.03]"
+                className="group inline-flex items-center justify-center gap-3 rounded-full border border-[#7360f2]/60 bg-[#7360f2]/10 px-7 py-4 text-sm font-medium text-white transition-colors hover:bg-[#7360f2]/20"
               >
-                Свържете се с нас
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ViberIcon className="size-4 text-[#b7adff]" />
+                Горещи оферти във Viber
+                <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </motion.a>
             </motion.div>
           </div>
@@ -141,7 +158,7 @@ export default function Hero() {
               <dt className="order-2 mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-mute sm:text-xs">
                 {stat.label}
               </dt>
-              <dd className="font-display text-xl font-semibold tracking-tight text-white sm:text-4xl">
+              <dd className="font-display text-lg font-semibold tracking-tight text-white sm:text-4xl">
                 {stat.value}
               </dd>
             </div>
