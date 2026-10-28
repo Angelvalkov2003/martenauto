@@ -9,7 +9,7 @@ import { ViberIcon } from "./BrandIcons";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const headline = ["За", "бъдещето", "си", "возило,", "елате", "при", "нас"];
+const headline = ["За", "бъдещия", "си", "автомобил,", "елате", "при", "нас"];
 
 const stats = [
   { value: "€ 4 000+", label: "Спестявате" },
